@@ -1,0 +1,11 @@
+.slotDefault {
+    padding: 1.5rem;
+}
+
+.activeSlot {
+    background-color: darkgreen;
+}
+
+.inactiveSlot {
+    background-color: darkred;
+}

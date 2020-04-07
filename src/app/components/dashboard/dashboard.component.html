@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5 mb-3">
+            <h1 class="text-center" style="font-size: 2rem;">
+                What would you like to do?
+            </h1>
+            <p class="text-center">
+                {{ bookingURL }}
+            </p>
+        </div>
+        <div *ngFor="let action of actions" class="col-md-6 px-1">
+            <mat-grid-list cols="1" rowHeight="200px" class="mt-2">
+                <mat-grid-tile
+                    style="cursor: pointer;"
+                    [style.background]="action.background"
+                    [routerLink]="action.route"
+                >
+                    <div class="mx-2">
+                        <h1 class="text-center">{{ action.name }}</h1>
+                        <p class="text-center">
+                            {{ action.description }}
+                        </p>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>
+</div>

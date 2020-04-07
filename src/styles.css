@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%;
+    background-color: black !important;
+}
+
+body { 
+    margin: 0;
+}
+
+* {
+    font-family: Lato, "Helvetica Neue", sans-serif !important;
+    outline: none !important;
+}
+
+.material-icons {
+    font-family: 'Material Icons' !important;
+}
+
+mat-sidenav-container {
+    background-color: transparent !important;
+}

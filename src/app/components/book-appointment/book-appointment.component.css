@@ -1,0 +1,15 @@
+.dayCard {
+    background: transparent;
+}
+
+.slotDefault {
+    padding: 1.5rem;
+}
+
+.freeSlot {
+    background-color: darkgreen;
+}
+
+.bookedSlot {
+    background-color: darkred;
+}

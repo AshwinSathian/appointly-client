@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="row">
+        <div #header class="col-md-12 mt-5 mb-3">
+            <h1 class="text-center" style="font-size: 2rem;">
+                Book an Appointment with {{ hostName }}
+            </h1>
+        </div>
+        <div class="col-md-6">
+            <mat-card class="w-100 dayCard">
+                <mat-card-title class="text-center">
+                    Today
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div *ngFor="let slot of allSlots" class="col-md-3 mt-2 px-1">
+                                <button
+                                    mat-button
+                                    [disabled]="shouldDisable('today', slot)"
+                                    [ngClass]="{ 
+                                        'bookedSlot': getBookingStatus('today', slot) === 'booked', 
+                                        'freeSlot': getBookingStatus('today', slot) === 'free'
+                                    }"
+                                    class="w-100 slotDefault"
+                                    (click)="initiateBooking('today', slot)"
+                                >
+                                    {{ slot - 1 + ':00 - ' + slot + ':00' }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-md-6">
+            <mat-card class="w-100 dayCard">
+                <mat-card-title class="text-center">
+                    Tomorrow
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div *ngFor="let slot of allSlots" class="col-md-3 mt-2 px-1">
+                                <button
+                                    mat-button
+                                    [disabled]="shouldDisable('tomorrow', slot)"
+                                    [ngClass]="{ 
+                                        'bookedSlot': getBookingStatus('tomorrow', slot) === 'booked', 
+                                        'freeSlot': getBookingStatus('tomorrow', slot) === 'free'
+                                    }"
+                                    class="w-100 slotDefault"
+                                    (click)="initiateBooking('tomorrow', slot)"
+                                >
+                                    {{ slot - 1 + ':00 - ' + slot + ':00' }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div #details class="col-md-12 mt-5 mb-5">
+            <mat-card class="w-100">
+                <mat-card-title>
+                    Appointment Details
+                </mat-card-title>
+                <mat-list role="list" class="mt-2">
+                    <mat-list-item role="listitem">
+                        Date: {{ appointmentDate.date | date }}
+                    </mat-list-item>
+                    <mat-list-item role="listitem">
+                        Time: {{ appointmentSlot - 1 + ':00 - ' + appointmentSlot + ':00' }}
+                    </mat-list-item>
+                    <!-- <mat-form-field class="w-100 mt-1 mb-2">
+                        <textarea 
+                            matInput 
+                            [placeholder]="'Note to ' + hostName + ' (optional)'" 
+                            rows="3" 
+                            cdkTextareaAutosize="true" 
+                            cdkAutosizeMinRows="3"
+                        ></textarea>
+                    </mat-form-field> -->
+                </mat-list>
+                <mat-card-actions>
+                    <button
+                        mat-flat-button
+                        class="w-100"
+                        color="primary"
+                        [disabled]="!isBooking"
+                        (click)="bookAppointment()"
+                    >
+                        CONFIRM BOOKING
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>

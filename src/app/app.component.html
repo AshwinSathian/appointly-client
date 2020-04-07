@@ -1,0 +1,51 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      mode="over" disableClose="false"
+    >
+    <mat-toolbar>Menu</mat-toolbar>
+    <br>
+    <mat-nav-list>
+      <a 
+        *ngIf="!userIsAuthenticated" 
+        mat-list-item 
+        routerLink="/login"
+      >
+        Login
+      </a>
+      <a 
+        *ngIf="!userIsAuthenticated" 
+        mat-list-item 
+        routerLink="/signup"
+      >
+        Sign Up
+      </a>
+      <a 
+        *ngIf="userIsAuthenticated" 
+        mat-list-item 
+        (click)="onLogout()"
+      >
+        Logout
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div *ngIf="sharedService.showLoader" class="w-100 mt-2 mb-2">
+      <mat-progress-spinner
+        class="mx-auto"
+        color="accent"
+        mode="indeterminate"
+        >
+      </mat-progress-spinner>
+      <p class="text-center">{{ sharedService.loaderText }}</p>
+    </div>
+    <app-header
+      (openDrawer)="drawer.toggle()"
+    >
+    </app-header
+    >
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
