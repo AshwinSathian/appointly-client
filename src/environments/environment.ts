@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendBaseURL: 'https://intense-eyrie-15781.herokuapp.com/api/'
+  backendBaseURL: "https://floating-fjord-65931.herokuapp.com/api/",
 };
 
 /*

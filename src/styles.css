@@ -18,6 +18,10 @@ body {
     font-family: 'Material Icons' !important;
 }
 
+.mono {
+    font-family: monospace !important;
+}
+
 mat-sidenav-container {
     background-color: transparent !important;
 }
